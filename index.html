@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBroadcaster - Advanced Telegram Broadcast</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Telegram Broadcaster Pro</h1>
+        
+        <div class="card">
+            <h3>Bot Setup</h3>
+            <input type="text" id="botToken" placeholder="Bot Token (from @BotFather)" />
+            <input type="text" id="workerUrl" placeholder="Worker URL (yourdomain.workers.dev)" />
+        </div>
+
+        <div class="card">
+            <h3>Broadcast Message</h3>
+            <textarea id="message" rows="4" placeholder="Your broadcast message..."></textarea>
+            <input type="file" id="userList" accept=".csv,.json" />
+            <div class="options">
+                <label><input type="checkbox" id="useProxies"> Use Proxies</label>
+                <label><input type="checkbox" id="schedule"> Schedule</label>
+                <input type="datetime-local" id="scheduleTime">
+            </div>
+            <button onclick="broadcast()">🚀 Start Broadcast</button>
+        </div>
+
+        <div class="card">
+            <h3>Analytics</h3>
+            <div id="stats">Ready to broadcast...</div>
+            <button onclick="fetchStats()">Refresh Stats</button>
+        </div>
+
+        <div class="card logs">
+            <h3>Live Logs</h3>
+            <div id="logs"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
